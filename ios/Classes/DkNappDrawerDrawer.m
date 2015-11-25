@@ -238,7 +238,7 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
     {
         if( navProxy != nil )
         {
-            NSLog(@"[DEBUG| Destroying old nav proxy");
+            NSLog(@"[DEBUG] Destroying old nav proxy");
             [navProxy windowDidClose];
         }
         // Save new proxy
@@ -261,8 +261,11 @@ UINavigationController * NavigationControllerForViewProxy(TiUIiOSNavWindowProxy 
 	ENSURE_UI_THREAD(setRightWindow_, args);
     if([TiUtils boolValue:args] == 0 ){
         [controller setRightDrawerViewController:nil];
+        NSLog(@"[DEBUG] Clearing Right Window");
     } else {
+        NSLog(@"[DEBUG] Setting right window for nappDrawer");
         [controller setRightDrawerViewController:ControllerForViewProxy(args)];
+        NSLog(@"[DEBUG] Done setting right window for nappDrawer");
     }
 }
 
